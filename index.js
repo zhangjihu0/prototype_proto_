@@ -22,3 +22,12 @@ console.log(cat.__proto__)
     // ...
 // }
 //如果不修改Cat.prototype.constructor，则Cat.prototype全部被覆盖，只存在new Animal()属性,和Cat.prototype.go='pa'
+
+
+function extend(Child, Parent) {//extend中介继承的实现，从而使Child与Parent之间修改相互不受影响；
+　　var F = function(){};
+　　F.prototype = Parent.prototype;
+　　Child.prototype = new F();
+　　Child.prototype.constructor = Child;
+　　Child.uber = Parent.prototype;
+}
